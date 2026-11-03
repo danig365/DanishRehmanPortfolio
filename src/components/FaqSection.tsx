@@ -12,6 +12,7 @@ function FaqItem({ question, answer, index }: { question: string; answer: string
     <AnimatedSection delay={index * 0.06} direction={index % 2 === 0 ? 'left' : 'right'}>
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
         className="w-full text-left"
       >
         <div

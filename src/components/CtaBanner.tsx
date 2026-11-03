@@ -15,7 +15,7 @@ export default function CtaBanner() {
         >
           <div className="absolute inset-0 z-0">
             <img
-              src="/image4.png"
+              src="/images/contact-bg.webp"
               alt=""
               loading="lazy"
               className="w-full h-full object-cover opacity-[0.18] dark:opacity-[0.4]"

@@ -46,7 +46,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mobile-safe container-safe">
           <div className="flex items-center justify-between h-16 md:h-20">
-            <button onClick={() => scrollTo('home')} className="flex items-center gap-2 group">
+            <button onClick={() => scrollTo('home')} aria-label="Danish Rehman - back to top" className="flex items-center gap-2 group">
               <div className="w-9 h-9 rounded-xl glass-badge flex items-center justify-center transition-all duration-300">
                 <Terminal className="w-5 h-5 text-sky-600 dark:text-sky-400" />
               </div>
@@ -82,6 +82,7 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-3">
               <button
                 onClick={toggleTheme}
+                aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
                 className="w-10 h-10 rounded-xl glass-badge flex items-center justify-center text-slate-500 dark:text-gray-400 hover:text-slate-800 dark:hover:text-white transition-colors"
               >
                 <AnimatePresence mode="wait">
@@ -110,12 +111,15 @@ export default function Navbar() {
             <div className="flex md:hidden items-center gap-2">
               <button
                 onClick={toggleTheme}
+                aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
                 className="w-10 h-10 flex items-center justify-center rounded-xl glass-badge text-slate-500 dark:text-gray-400 transition-colors"
               >
                 {theme === 'dark' ? <Sun className="w-[18px] h-[18px]" /> : <Moon className="w-[18px] h-[18px]" />}
               </button>
               <button
                 onClick={() => setIsMobileOpen(!isMobileOpen)}
+                aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={isMobileOpen}
                 className="w-10 h-10 flex items-center justify-center rounded-xl glass-badge text-slate-500 dark:text-gray-400 transition-colors"
               >
                 {isMobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

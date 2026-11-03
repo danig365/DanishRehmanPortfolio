@@ -34,7 +34,6 @@ export default function App() {
         <Suspense fallback={<LoadingSpinner />}>
           <div className="relative">
             <AboutSection />
-            {/* <StatsSection /> */}
             <ExperienceSection />
             <SkillsSection />
             <ProjectsSection />

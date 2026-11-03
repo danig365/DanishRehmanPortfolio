@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useTheme } from '../hooks/useTheme';
-import { isMobile } from '../utils/deviceDetection';
+import { isMobile, prefersReducedMotion } from '../utils/deviceDetection';
 
 interface Particle {
   x: number;
@@ -15,9 +15,10 @@ export default function ParticleField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { theme } = useTheme();
   const mobile = isMobile();
+  const reducedMotion = prefersReducedMotion();
 
   useEffect(() => {
-    if (mobile) return;
+    if (mobile || reducedMotion) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -117,21 +118,29 @@ export default function ParticleField() {
       mouseY = e.clientY;
     };
 
+    // Stop drawing while the tab is hidden to save CPU/battery
+    const handleVisibility = () => {
+      cancelAnimationFrame(animationId);
+      if (!document.hidden) animate();
+    };
+
     resize();
     init();
     animate();
 
     window.addEventListener('resize', resize);
     window.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('visibilitychange', handleVisibility);
 
     return () => {
       cancelAnimationFrame(animationId);
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('visibilitychange', handleVisibility);
     };
-  }, [theme, mobile]);
+  }, [theme, mobile, reducedMotion]);
 
-  if (mobile) {
+  if (mobile || reducedMotion) {
     return null;
   }
 

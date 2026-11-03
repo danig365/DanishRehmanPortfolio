@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, ExternalLink, Github, Linkedin, Mail, MessageSquare, CheckCircle, AlertCircle, Loader, MessageCircle } from 'lucide-react';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 import AnimatedSection from './AnimatedSection';
 import SectionHeading from './SectionHeading';
 import { personalInfo } from '../data/portfolio';
-import { isIOS, isMobile } from '../utils/deviceDetection';
+import BackgroundVideo from './BackgroundVideo';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -46,29 +46,16 @@ export default function ContactSection() {
     }
   };
 
-  const useMobileOptimization = isIOS() || isMobile();
   
   return (
     <section id="contact" className="relative py-24 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 z-0">
-        {useMobileOptimization ? (
-          <img
-            src="/image4.png"
-            alt=""
-            loading="lazy"
-            className="w-full h-full object-cover opacity-[0.12] dark:opacity-[0.15]"
-          />
-        ) : (
-          <video
-            src="/iStock-2154971136.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="none"
-            className="w-full h-full object-cover opacity-[0.12] dark:opacity-[0.15]"
-          />
-        )}
+        <BackgroundVideo
+          src="/videos/contact.mp4"
+          poster="/videos/contact-poster.webp"
+          fallback="/images/contact-bg.webp"
+          className="w-full h-full object-cover opacity-[0.12] dark:opacity-[0.15]"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-[#f0f4f8]/70 via-transparent to-[#f0f4f8]/70 dark:from-[#080c12]/80 dark:via-transparent dark:to-[#080c12]/80" />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

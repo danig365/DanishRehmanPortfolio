@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, ExternalLink, Download, MessageCircle } from 'lucide-react';
+import { ChevronDown, ExternalLink, ArrowDown, MessageCircle } from 'lucide-react';
 import { useTypewriter } from '../hooks/useTypewriter';
 import GlitchText from './GlitchText';
+import BackgroundVideo from './BackgroundVideo';
 import { personalInfo, roles, terminalLines } from '../data/portfolio';
 import { isIOS, isMobile } from '../utils/deviceDetection';
 
@@ -64,13 +65,10 @@ export default function HeroSection() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 mobile-safe">
       <div className="absolute inset-0 z-0 mobile-safe">
-        <video
-          src="/iStock-2218919293.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
+        <BackgroundVideo
+          src="/videos/hero.mp4"
+          poster="/videos/hero-poster.webp"
+          priority
           className="w-full h-full object-cover opacity-[0.18] dark:opacity-[0.6]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#f0f4f8]/60 via-transparent to-[#f0f4f8] dark:from-[#080c12]/60 dark:via-transparent dark:to-[#080c12]" />
@@ -160,7 +158,7 @@ export default function HeroSection() {
                 className="flex items-center gap-2 px-6 py-3 glass-btn rounded-xl text-slate-700 dark:text-white transition-all duration-300"
               >
                 View Projects
-                <Download className="w-4 h-4" />
+                <ArrowDown className="w-4 h-4" />
               </button>
             </motion.div>
           </div>
@@ -176,6 +174,7 @@ export default function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
         onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+        aria-label="Scroll to About section"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-400 dark:text-gray-600 hover:text-slate-700 dark:hover:text-white transition-colors"
       >
         <ChevronDown className="w-6 h-6 animate-bounce" />

@@ -28,7 +28,7 @@ export default function SkillsSection() {
     <section id="skills" className="relative py-24 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img
-          src="/iStock-1483065942.jpg"
+          src="/images/skills-bg.webp"
           alt=""          loading="lazy"          className="w-full h-full object-cover opacity-[0.15] dark:opacity-[0.38]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#f0f4f8]/70 via-transparent to-[#f0f4f8]/70 dark:from-[#080c12]/80 dark:via-transparent dark:to-[#080c12]/80" />

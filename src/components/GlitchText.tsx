@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { prefersReducedMotion } from '../utils/deviceDetection';
 
 interface GlitchTextProps {
   text: string;
@@ -6,18 +7,23 @@ interface GlitchTextProps {
   as?: 'h1' | 'h2' | 'h3' | 'span';
 }
 
+const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789';
+
 export default function GlitchText({ text, className = '', as: Tag = 'span' }: GlitchTextProps) {
   const [glitchedText, setGlitchedText] = useState(text);
   const [isGlitching, setIsGlitching] = useState(false);
-  const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789';
 
   useEffect(() => {
+    if (prefersReducedMotion()) return;
+
+    let glitchInterval: ReturnType<typeof setInterval> | undefined;
+
     const interval = setInterval(() => {
       setIsGlitching(true);
       let iterations = 0;
       const maxIterations = 6;
 
-      const glitchInterval = setInterval(() => {
+      glitchInterval = setInterval(() => {
         setGlitchedText(
           text
             .split('')
@@ -39,12 +45,15 @@ export default function GlitchText({ text, className = '', as: Tag = 'span' }: G
       }, 50);
     }, 5000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      clearInterval(glitchInterval);
+    };
   }, [text]);
 
   return (
-    <Tag className={`${className} ${isGlitching ? 'text-glow' : ''}`}>
-      {glitchedText}
+    <Tag className={`${className} ${isGlitching ? 'text-glow' : ''}`} aria-label={text}>
+      <span aria-hidden="true">{glitchedText}</span>
     </Tag>
   );
 }
