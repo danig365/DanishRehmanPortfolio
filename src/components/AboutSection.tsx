@@ -16,19 +16,23 @@ export default function AboutSection() {
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <AnimatedSection direction="left">
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden glass-panel glass-shine">
+            <div className="relative max-w-sm mx-auto">
+              <div className="relative rounded-2xl overflow-hidden glass-panel glass-shine aspect-[4/5]">
                 <img
-                  src="https://images.pexels.com/photos/4974915/pexels-photo-4974915.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Developer workspace"
+                  src="/images/danish-rehman.webp"
+                  alt="Danish Rehman, Full Stack Web Developer"
+                  width={480}
+                  height={600}
                   loading="lazy"
-                  className="w-full h-80 lg:h-96 object-cover opacity-60"
+                  decoding="async"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#f0f4f8] via-[#f0f4f8]/40 to-transparent dark:from-[#080c12] dark:via-[#080c12]/40" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="flex items-center gap-3 text-sm text-slate-500 dark:text-gray-400">
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#f0f4f8] via-[#f0f4f8]/60 to-transparent dark:from-[#080c12] dark:via-[#080c12]/60" />
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <p className="text-slate-900 dark:text-white font-semibold">{personalInfo.name}</p>
+                  <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-gray-300">
                     <MapPin className="w-4 h-4 text-sky-600 dark:text-sky-400" />
-                    <span>Available Worldwide for Freelance Projects</span>
+                    <span>{personalInfo.address} · Remote worldwide</span>
                   </div>
                 </div>
               </div>
@@ -38,7 +42,7 @@ export default function AboutSection() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
-                className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl glass-panel glass-shine flex flex-col items-center justify-center gap-1"
+                className="absolute -top-6 -right-4 sm:-right-6 w-28 h-28 sm:w-32 sm:h-32 rounded-2xl glass-panel glass-shine bg-white/95 dark:bg-[#0d131c]/95 flex flex-col items-center justify-center gap-1"
               >
                 <span className="text-3xl font-bold text-slate-900 dark:text-white">3+</span>
                 <span className="text-xs text-slate-500 dark:text-gray-400 text-center">Years of<br />Experience</span>
