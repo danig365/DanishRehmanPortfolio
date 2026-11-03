@@ -41,51 +41,132 @@ export const skills = [
   { name: 'Git / CI/CD', level: 85, category: 'tools', icon: GitBranch },
 ];
 
-export const projects = [
+export interface Project {
+  title: string;
+  tagline: string;
+  role: string;
+  client: string;
+  period: string;
+  summary: string;
+  highlights: string[];
+  tech: string[];
+  status: string;
+  image: string;
+  liveUrl: string;
+  githubUrl: string;
+  platforms: string[];
+}
+
+export const projects: Project[] = [
   {
-    title: 'CognisolHealth - Health Appointment System',
-    description: 'Multi-clinic, multi-doctor appointment platform with patient management, manual booking workflows, and Vonage-based booking support.',
-    tech: ['Django', 'React'],
-    image: '/images/projects/cognisolhealth.webp',
-    category: 'web',
-    liveUrl: 'https://hp.cognisol.ai',
+    title: 'CogniPulse',
+    tagline: 'Multi-clinic healthcare appointment platform',
+    role: 'Software Engineer · sole full-stack developer',
+    client: 'Cognisol Technologies',
+    period: 'Sep 2025 – present',
+    summary:
+      'A healthcare SaaS where clinics manage doctors, staff, services and appointments, and patients book online or by phone. Built end to end by me, working with the project manager and CTO.',
+    highlights: [
+      'Three roles: clinic admins (full clinic view, staff, doctors, services, appointments, marketing), doctors (availability slots, schedules) and patients',
+      'Phone booking via Vonage: voice-menu (IVR) booking, SMS confirmations and reminders, OTP verification',
+      'Time-zone-safe scheduling so slots, bookings and reminders stay correct for clinics, doctors and patients',
+      'Asynchronous reminders and notifications with Celery and Redis',
+      'Deployed and maintained on a Linux VPS',
+    ],
+    tech: ['Django', 'Django REST Framework', 'React', 'PostgreSQL', 'Celery', 'Redis', 'Vonage', 'Linux VPS'],
+    status: 'Live · two clinics onboarded · code private (company property)',
+    image: '/images/projects/cognipulse.webp',
+    liveUrl: 'https://cognipulse.us',
     githubUrl: '',
+    platforms: ['Web'],
   },
   {
     title: 'Kannari Music Academy',
-    description: 'Comprehensive music learning platform with structured course delivery, subscription management, parent consent workflows for minors, and integrated communication features.',
-    tech: ['Django', 'React'],
+    tagline: 'Music learning platform + mobile app',
+    role: 'Solo full-stack developer',
+    client: 'US music academy (via Softsolutionz)',
+    period: '2025 · ~5 months',
+    summary:
+      'A US music academy moved its teaching online: a subscription platform for video and audio lessons, assignments and parent-supervised learning for minors, with a React Native app on the same API.',
+    highlights: [
+      'Five roles: admin, teachers (content), parents (approvals), schools (classes) and students (lessons, assignments, games)',
+      'Parent-consent workflow: minor accounts stay restricted until a parent approves; adults get direct access',
+      'Video and audio lessons, assignments, progress tracking and learning games',
+      'Real-time chat and messaging, video calls and email notifications',
+      'Stripe subscriptions for paid access',
+      'React Native app for students, parents and teachers, sharing the same Django REST API as the web app',
+    ],
+    tech: ['Django', 'Django REST Framework', 'React', 'React Native', 'PostgreSQL', 'Celery', 'Redis', 'Stripe'],
+    status: 'Live · students actively using it · code private (client-owned)',
     image: '/images/projects/kannari-music-academy.webp',
-    category: 'web',
     liveUrl: 'https://kannarimusicacademy.com',
     githubUrl: '',
-  },
-  {
-    title: 'Embroidery Digitizing System',
-    description: 'AI-powered platform where users generate design concepts and place orders to receive machine-ready embroidery files in multiple production formats.',
-    tech: ['Django', 'React'],
-    image: '/images/projects/embroidery-digitizing.webp',
-    category: 'web',
-    liveUrl: 'https://aiembroideryfiles.com',
-    githubUrl: '',
+    platforms: ['Web', 'Mobile'],
   },
   {
     title: 'Popupplay',
-    description: 'Online dating platform with location-based discovery, real-time chat, video calling, and short-form media sharing including videos and reels.',
-    tech: ['Node.js', 'Express'],
+    tagline: 'Location-based social & dating platform',
+    role: 'Solo full-stack developer',
+    client: 'Client via Softsolutionz',
+    period: '2026 · ~4 months + ongoing',
+    summary:
+      'A dating platform where users "pop up" on a live map to show nearby people they are available right now, then connect through chat, video calls and reels.',
+    highlights: [
+      'Live map pop-ups: users broadcast that they are live and others discover them by location (Leaflet)',
+      'Real-time messaging over WebSockets and peer-to-peer video calls with WebRTC (STUN/TURN)',
+      'Reels: short-form video uploads and feed',
+      'CCBill payment integration; tipping system in progress',
+      'Ongoing feature work for the client after launch',
+    ],
+    tech: ['Node.js', 'Express', 'React', 'WebSockets', 'WebRTC', 'Leaflet', 'CCBill', 'Nginx'],
+    status: 'Live · active users · code private (client-owned)',
     image: '/images/projects/popupplay.webp',
-    category: 'web',
     liveUrl: 'https://popupplay.fun',
     githubUrl: '',
+    platforms: ['Web'],
+  },
+  {
+    title: 'AI Embroidery Files',
+    tagline: 'AI design generation + embroidery digitizing orders',
+    role: 'Solo full-stack developer',
+    client: 'Embroidery digitizer (via Softsolutionz)',
+    period: '2025 · ~1.5 months',
+    summary:
+      'An embroidery digitizer wanted customers to create designs with AI and order machine-ready embroidery files online, turning a manual service into a self-serve storefront.',
+    highlights: [
+      'AI design generation: customers describe a design and the OpenAI image API creates it',
+      'Order flow: generate → order → pay with Stripe → admin reviews and digitizes → customer downloads',
+      'Delivery in all major machine formats (DST, PES, JEF, EXP and more)',
+      'Customer and admin roles with order management dashboard',
+    ],
+    tech: ['Django', 'Django REST Framework', 'React', 'PostgreSQL', 'Celery', 'Redis', 'OpenAI API', 'Stripe'],
+    status: 'Live · customers placing paid orders · open source',
+    image: '/images/projects/embroidery-digitizing.webp',
+    liveUrl: 'https://aiembroideryfiles.com',
+    githubUrl: 'https://github.com/danig365/AI_Embroidery_Files',
+    platforms: ['Web'],
   },
   {
     title: 'Makanzar Real Estate',
-    description: 'Real estate platform where traders can publish property locations and listing details, while users browse listings and view complete property information.',
-    tech: ['Django', 'React'],
+    tagline: 'Property listing platform for dealers',
+    role: 'Solo full-stack developer',
+    client: 'Real estate agency, Pakistan (referral)',
+    period: '2025 · ~1 month',
+    summary:
+      'A listing platform where property dealers publish projects and houses for sale or rent, and buyers search, filter and contact dealers directly.',
+    highlights: [
+      'Dealer accounts to publish projects, houses and plots for sale or rent',
+      'Map and location-based search with filters for price, type and area',
+      'Image galleries and full property detail pages',
+      'Contact-the-dealer flow and saved favourites',
+      'Admin approval of listings and featured listings',
+    ],
+    tech: ['Django', 'Django REST Framework', 'React', 'PostgreSQL'],
+    status: 'Live',
     image: '/images/projects/makanzar-real-estate.webp',
-    category: 'web',
     liveUrl: 'https://makanzar-real-estate.vercel.app/',
     githubUrl: '',
+    platforms: ['Web'],
   },
 ];
 
@@ -156,18 +237,25 @@ export const testimonials = [
 
 export const experience = [
   {
-    year: '2025 - Present',
-    title: 'Full Stack Web Developer',
-    company: 'Independent Freelance',
-    description: 'Delivering web applications and feature development for clients with Django, React, Supabase, and Firebase.',
-    highlights: ['Client-Centric Delivery', 'Clean Architecture', 'Fast Communication'],
+    year: 'Sep 2025 - Present',
+    title: 'Software Engineer',
+    company: 'Cognisol Technologies · Remote',
+    description: 'Sole full-stack developer of CogniPulse, a multi-clinic healthcare appointment platform with online and phone (Vonage IVR/SMS) booking, working directly with the project manager and CTO.',
+    highlights: ['Django', 'React', 'Celery + Redis', 'PostgreSQL', 'Vonage'],
   },
   {
-    year: '2023 - 2025',
-    title: 'Django + React Developer',
-    company: 'Freelance',
-    description: 'Built production-ready web systems with API integrations, authentication, dashboards, and deployment workflows.',
-    highlights: ['Django', 'React', 'PostgreSQL'],
+    year: '2025 - Present',
+    title: 'Full Stack Developer (Contract)',
+    company: 'Softsolutionz · Remote',
+    description: 'Solo developer on client products for US and international clients: a music learning platform with a React Native app, an AI embroidery ordering platform and a location-based dating platform.',
+    highlights: ['Django', 'Node.js', 'React Native', 'Stripe', 'WebRTC'],
+  },
+  {
+    year: '2023 - Present',
+    title: 'Freelance Full Stack Developer',
+    company: 'Fiverr & direct clients',
+    description: 'Web applications, bug fixes and feature development for startups and businesses, including a real estate listing platform for a Pakistani agency.',
+    highlights: ['Django', 'React', 'PostgreSQL', 'REST APIs'],
   },
   {
     year: '2022 - 2023',

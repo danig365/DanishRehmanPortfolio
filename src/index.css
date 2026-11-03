@@ -296,12 +296,6 @@
       backdrop-filter: blur(2px) !important;
       -webkit-backdrop-filter: blur(2px) !important;
     }
-    
-    /* Hardware acceleration for iOS */
-    * {
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-    }
   }
 }
 
