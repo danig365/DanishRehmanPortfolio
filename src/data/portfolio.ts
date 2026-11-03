@@ -251,25 +251,18 @@ export const experience = [
     highlights: ['Django', 'Node.js', 'React Native', 'Stripe', 'WebRTC'],
   },
   {
-    year: '2023 - Present',
+    year: '2024 - Present',
     title: 'Freelance Full Stack Developer',
     company: 'Fiverr & direct clients',
     description: 'Web applications, bug fixes and feature development for startups and businesses, including a real estate listing platform for a Pakistani agency.',
     highlights: ['Django', 'React', 'PostgreSQL', 'REST APIs'],
   },
   {
-    year: '2022 - 2023',
-    title: 'Frontend Developer',
-    company: 'Remote',
-    description: 'Developed responsive interfaces and integrated backend APIs for internal and client-facing products.',
-    highlights: ['React', 'TypeScript', 'REST APIs'],
-  },
-  {
-    year: '2021 - 2022',
-    title: 'Junior Developer',
-    company: 'Early Career / Self-Learning',
-    description: 'Built foundational projects and practiced modern web development workflows across frontend and backend stacks.',
-    highlights: ['JavaScript', 'Python', 'Git'],
+    year: '2021 - 2023',
+    title: 'Learning & First Projects',
+    company: 'Self-taught',
+    description: 'Learned web development hands-on alongside my studies: built practice projects across frontend and backend, and moved from JavaScript and React to Python and Django.',
+    highlights: ['JavaScript', 'React', 'Python', 'Django', 'Git'],
   },
 ];
 
