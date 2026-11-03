@@ -377,10 +377,10 @@ export const packages = [
 
 export const education = [
   {
-    period: 'Ongoing',
-    degree: 'Continuous Learning in Full Stack Development',
-    institution: 'Self-Learning & Online Programs',
-    description: 'Focused on practical software engineering, backend architecture, and modern frontend development.',
+    period: '2021 - 2025',
+    degree: 'BS Computer Science',
+    institution: 'University of the Punjab, Gujranwala Campus',
+    description: 'Final year project: a Fiverr-style marketplace for home and commercial services (plumbing, electrical and more), connecting customers with local service providers.',
   },
 ];
 
