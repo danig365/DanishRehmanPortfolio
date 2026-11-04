@@ -1,10 +1,14 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Zap, MessageCircle } from 'lucide-react';
+import { Zap, MessageCircle, FileDown } from 'lucide-react';
 import { personalInfo } from '../data/portfolio';
+
+const startProjectUrl = `${personalInfo.whatsapp}?text=${encodeURIComponent(
+  "Hi Danish, I saw your projects and I'd like to discuss something similar."
+)}`;
 
 export default function CtaBanner() {
   return (
-    <section className="relative py-20 lg:py-28">
+    <section id="start-a-project" className="relative py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 30 }}
@@ -33,41 +37,36 @@ export default function CtaBanner() {
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-badge mb-6"
             >
               <Zap className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
-              <span className="text-slate-500 dark:text-gray-400 text-sm font-mono">Available for projects</span>
+              <span className="text-slate-500 dark:text-gray-400 text-sm font-mono">Open to projects &amp; full-time roles</span>
             </motion.div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4 max-w-2xl mx-auto leading-tight">
-              Ready to bring your
+              Have a project like
               <br />
-              <span className="text-sky-600 dark:text-sky-300">idea to life?</span>
+              <span className="text-sky-600 dark:text-sky-300">these in mind?</span>
             </h2>
 
             <p className="text-slate-500 dark:text-gray-400 text-lg max-w-xl mx-auto mb-8">
-              Let's discuss your project and build something exceptional together. Message me on WhatsApp or send a message through the form.
+              Tell me what you're building. I'll reply with how I'd approach it and a clear proposal. Hiring for a full-time role? Grab my CV.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="#contact"
-                className="group flex items-center gap-2 px-8 py-3.5 bg-slate-900 dark:bg-white/90 text-white dark:text-[#080c12] font-semibold rounded-xl hover:bg-slate-800 dark:hover:bg-white transition-all hover:shadow-lg hover:shadow-white/10 backdrop-blur-sm"
-              >
-                Send a Message
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a
-                href={personalInfo.whatsapp}
+                href={startProjectUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 px-8 py-3.5 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition-all hover:shadow-lg backdrop-blur-sm"
+                className="flex items-center gap-2 px-8 py-3.5 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition-all hover:shadow-lg"
               >
                 <MessageCircle className="w-4 h-4" />
-                WhatsApp Chat
+                Start a Project
               </a>
               <a
-                href="#contact"
-                className="flex items-center gap-2 px-8 py-3.5 glass-btn rounded-xl text-slate-700 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white font-semibold transition-all"
+                href={personalInfo.cv}
+                download
+                className="flex items-center gap-2 px-8 py-3.5 glass-btn rounded-xl text-slate-700 dark:text-white font-semibold transition-all"
               >
-                Send a Message
+                <FileDown className="w-4 h-4" />
+                Download CV
               </a>
             </div>
           </div>

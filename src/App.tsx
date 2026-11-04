@@ -38,12 +38,12 @@ export default function App() {
               <ExperienceSection />
               <SkillsSection />
               <ProjectsSection />
+              <CtaBanner />
               <ServicesSection />
               <PricingSection />
               <TestimonialsSection />
               <EducationSection />
               <FaqSection />
-              <CtaBanner />
               <ContactSection />
             </div>
           </Suspense>
