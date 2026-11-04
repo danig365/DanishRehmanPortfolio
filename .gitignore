@@ -29,3 +29,6 @@ dist-ssr
 
 # Original photos (not deployed)
 photos-original/
+
+# Local helper scripts (not deployed)
+.tools/

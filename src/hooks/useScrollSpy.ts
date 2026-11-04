@@ -5,21 +5,25 @@ export function useScrollSpy(sectionIds: string[], offset = 100) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + offset;
-
+      // Measure against the viewport: offsetTop is relative to the nearest
+      // positioned ancestor, which made the highlight jump one section ahead.
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const element = document.getElementById(sectionIds[i]);
-        if (element && element.offsetTop <= scrollPosition) {
+        if (element && element.getBoundingClientRect().top <= offset) {
           setActiveSection(sectionIds[i]);
           return;
         }
       }
-      setActiveSection(sectionIds[0]);
+      setActiveSection('');
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, [sectionIds, offset]);
 
   return activeSection;
