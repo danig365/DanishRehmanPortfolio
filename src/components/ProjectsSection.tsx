@@ -1,13 +1,24 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, ArrowRight, Github, X, CheckCircle2, Smartphone } from 'lucide-react';
+import { ExternalLink, ArrowRight, Github, X, CheckCircle2, Smartphone, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 import SectionHeading from './SectionHeading';
 import { projects, personalInfo, type Project } from '../data/portfolio';
 
-function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
+const FEATURED_COUNT = 6;
+
+interface ProjectModalProps {
+  project: Project;
+  position: string;
+  onClose: () => void;
+  onPrev: () => void;
+  onNext: () => void;
+}
+
+function ProjectModal({ project, position, onClose, onPrev, onNext }: ProjectModalProps) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const previousFocus = document.activeElement as HTMLElement | null;
@@ -26,6 +37,20 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
     };
   }, [onClose]);
 
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') onPrev();
+      if (e.key === 'ArrowRight') onNext();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onPrev, onNext]);
+
+  // Start each case study at the top when moving between projects
+  useEffect(() => {
+    dialogRef.current?.scrollTo({ top: 0 });
+  }, [project.title]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -36,6 +61,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
       onClick={onClose}
     >
       <motion.div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="project-modal-title"
@@ -121,6 +147,26 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               </a>
             )}
           </div>
+
+          <div className="flex items-center justify-between gap-3 mt-8 pt-5 border-t border-black/[0.06] dark:border-white/[0.08]">
+            <button
+              onClick={onPrev}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-300 transition-colors"
+            >
+              <ChevronLeft className="w-4 h-4" />
+              Previous
+            </button>
+            <span className="text-xs font-mono text-slate-400 dark:text-gray-500" aria-live="polite">
+              {position}
+            </span>
+            <button
+              onClick={onNext}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-300 transition-colors"
+            >
+              Next
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </motion.div>
     </motion.div>
@@ -128,8 +174,15 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 }
 
 export default function ProjectsSection() {
-  const [selected, setSelected] = useState<Project | null>(null);
-  const closeModal = useCallback(() => setSelected(null), []);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [showAll, setShowAll] = useState(false);
+  const closeModal = useCallback(() => setSelectedIndex(null), []);
+  const showPrev = useCallback(
+    () => setSelectedIndex((i) => (i === null ? i : (i - 1 + projects.length) % projects.length)),
+    []
+  );
+  const showNext = useCallback(() => setSelectedIndex((i) => (i === null ? i : (i + 1) % projects.length)), []);
+  const visibleProjects = showAll ? projects : projects.slice(0, FEATURED_COUNT);
 
   return (
     <section id="projects" className="relative py-24 lg:py-32">
@@ -141,7 +194,7 @@ export default function ProjectsSection() {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <motion.article
               key={project.title}
               initial={{ opacity: 0, y: 30 }}
@@ -151,7 +204,7 @@ export default function ProjectsSection() {
               className="group relative flex flex-col rounded-2xl overflow-hidden glass-card glass-card-hover glass-shine transition-all duration-500"
             >
               <button
-                onClick={() => setSelected(project)}
+                onClick={() => setSelectedIndex(index)}
                 aria-label={`Open ${project.title} case study`}
                 className="relative h-48 overflow-hidden text-left"
               >
@@ -180,7 +233,7 @@ export default function ProjectsSection() {
                 <p className="text-sky-600 dark:text-sky-400 font-mono text-xs mb-1.5">{project.tagline}</p>
                 <h3 className="text-slate-900 dark:text-white font-semibold text-lg mb-1">{project.title}</h3>
                 <p className="text-xs text-slate-400 dark:text-gray-500 mb-3">
-                  {project.role} · {project.period}
+                  {project.shortRole} · {project.period}
                 </p>
                 <p className="text-slate-500 dark:text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
                   {project.summary}
@@ -203,7 +256,7 @@ export default function ProjectsSection() {
 
                 <div className="mt-auto flex items-center gap-4 text-sm">
                   <button
-                    onClick={() => setSelected(project)}
+                    onClick={() => setSelectedIndex(index)}
                     className="inline-flex items-center gap-1.5 font-medium text-slate-900 dark:text-white hover:text-sky-600 dark:hover:text-sky-300 transition-colors"
                   >
                     Case study
@@ -239,8 +292,21 @@ export default function ProjectsSection() {
           ))}
         </div>
 
+        {projects.length > FEATURED_COUNT && (
+          <div className="text-center mt-10">
+            <button
+              onClick={() => setShowAll((v) => !v)}
+              aria-expanded={showAll}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl glass-btn text-slate-700 dark:text-white font-semibold text-sm"
+            >
+              {showAll ? 'Show fewer projects' : `Show all ${projects.length} projects`}
+              <ChevronDown className={`w-4 h-4 transition-transform ${showAll ? 'rotate-180' : ''}`} />
+            </button>
+          </div>
+        )}
+
         <AnimatedSection delay={0.3}>
-          <div className="text-center mt-12">
+          <div className="text-center mt-8">
             <a
               href={personalInfo.github}
               target="_blank"
@@ -256,7 +322,15 @@ export default function ProjectsSection() {
 
       {createPortal(
         <AnimatePresence>
-          {selected && <ProjectModal project={selected} onClose={closeModal} />}
+          {selectedIndex !== null && (
+            <ProjectModal
+              project={projects[selectedIndex]}
+              position={`${selectedIndex + 1} / ${projects.length}`}
+              onClose={closeModal}
+              onPrev={showPrev}
+              onNext={showNext}
+            />
+          )}
         </AnimatePresence>,
         document.body
       )}

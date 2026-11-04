@@ -67,7 +67,6 @@ export const skillGroups = [
       { name: 'Vonage (IVR / SMS)', match: ['Vonage'] },
       { name: 'Google Calendar API', match: ['Google Calendar API'] },
       { name: 'Deepgram', match: ['Deepgram'] },
-      { name: 'CCBill', match: ['CCBill'] },
       { name: 'Leaflet maps', match: ['Leaflet'] },
     ],
   },
@@ -91,6 +90,7 @@ export const alsoWorkedWith = ['Next.js', 'Supabase', 'Firebase'];
 
 export interface Project {
   title: string;
+  shortRole: string;
   tagline: string;
   role: string;
   client: string;
@@ -107,33 +107,12 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: 'CogniPulse',
-    tagline: 'Multi-clinic healthcare appointment platform',
-    role: 'Software Engineer · sole full-stack developer',
-    client: 'Cognisol Technologies',
-    period: 'Sep 2025 – present',
-    summary:
-      'A healthcare SaaS where clinics manage doctors, staff, services and appointments, and patients book online or by phone. Built end to end by me, working with the project manager and CTO.',
-    highlights: [
-      'Three roles: clinic admins (full clinic view, staff, doctors, services, appointments, marketing), doctors (availability slots, schedules) and patients',
-      'Phone booking via Vonage: voice-menu (IVR) booking, SMS confirmations and reminders, OTP verification',
-      'Time-zone-safe scheduling so slots, bookings and reminders stay correct for clinics, doctors and patients',
-      'Asynchronous reminders and notifications with Celery and Redis',
-      'Deployed and maintained on a Linux VPS',
-    ],
-    tech: ['Django', 'Django REST Framework', 'React', 'PostgreSQL', 'Celery', 'Redis', 'Vonage', 'Linux VPS'],
-    status: 'Live · two clinics onboarded · code private (company property)',
-    image: '/images/projects/cognipulse.webp',
-    liveUrl: 'https://cognipulse.us',
-    githubUrl: '',
-    platforms: ['Web'],
-  },
-  {
     title: 'SCMS – Clinical Management System',
+    shortRole: 'Founder & solo developer',
     tagline: 'Behavioural health EHR for a US provider',
     role: 'Founder & solo developer · PrimeCurve Solutionz',
     client: 'SYNERGY Recovery Institute, Washington DC (repeat client)',
-    period: 'Aug 2026 – present · ~5-month build',
+    period: 'Aug 2026 – present',
     summary:
       'After I delivered dr-nath.com, the same client hired me to build an EHR for their behavioural health company. I am the sole developer on this custom EHR, practice management and revenue-cycle platform, built under a signed development agreement in contract phases. Phases 1–3 are live in production with real patient records; billing and telehealth are next.',
     highlights: [
@@ -155,7 +134,31 @@ export const projects: Project[] = [
     platforms: ['Web'],
   },
   {
+    title: 'CogniPulse',
+    shortRole: 'Software Engineer',
+    tagline: 'Multi-clinic healthcare appointment platform',
+    role: 'Software Engineer · sole full-stack developer',
+    client: 'Cognisol Technologies',
+    period: 'Sep 2025 – present',
+    summary:
+      'A healthcare SaaS where clinics manage doctors, staff, services and appointments, and patients book online or by phone. Built end to end by me, working with the project manager and CTO.',
+    highlights: [
+      'Three roles: clinic admins (full clinic view, staff, doctors, services, appointments, marketing), doctors (availability slots, schedules) and patients',
+      'Phone booking via Vonage: voice-menu (IVR) booking, SMS confirmations and reminders, OTP verification',
+      'Time-zone-safe scheduling so slots, bookings and reminders stay correct for clinics, doctors and patients',
+      'Asynchronous reminders and notifications with Celery and Redis',
+      'Deployed and maintained on a Linux VPS',
+    ],
+    tech: ['Django', 'Django REST Framework', 'React', 'PostgreSQL', 'Celery', 'Redis', 'Vonage', 'Linux VPS'],
+    status: 'Live · two clinics onboarded · code private (company property)',
+    image: '/images/projects/cognipulse.webp',
+    liveUrl: 'https://cognipulse.us',
+    githubUrl: '',
+    platforms: ['Web'],
+  },
+  {
     title: 'Dr. Nath – Coaching for Impact',
+    shortRole: 'Solo full-stack developer',
     tagline: 'All-in-one coaching platform + mobile app',
     role: 'Solo full-stack developer',
     client: 'Coaching business (Fiverr client)',
@@ -181,6 +184,7 @@ export const projects: Project[] = [
   },
   {
     title: 'Kannari Music Academy',
+    shortRole: 'Solo full-stack developer',
     tagline: 'Music learning platform + mobile app',
     role: 'Solo full-stack developer',
     client: 'US music academy (via Softsolutionz)',
@@ -203,29 +207,8 @@ export const projects: Project[] = [
     platforms: ['Web', 'Mobile'],
   },
   {
-    title: 'Popupplay',
-    tagline: 'Location-based social & dating platform',
-    role: 'Solo full-stack developer',
-    client: 'Client via Softsolutionz',
-    period: '2026 · ~4 months + ongoing',
-    summary:
-      'A dating platform where users "pop up" on a live map to show nearby people they are available right now, then connect through chat, video calls and reels.',
-    highlights: [
-      'Live map pop-ups: users broadcast that they are live and others discover them by location (Leaflet)',
-      'Real-time messaging over WebSockets and peer-to-peer video calls with WebRTC (STUN/TURN)',
-      'Reels: short-form video uploads and feed',
-      'CCBill payment integration; tipping system in progress',
-      'Ongoing feature work for the client after launch',
-    ],
-    tech: ['Node.js', 'Express', 'React', 'WebSockets', 'WebRTC', 'Leaflet', 'CCBill', 'Nginx'],
-    status: 'Live · active users · code private (client-owned)',
-    image: '/images/projects/popupplay.webp',
-    liveUrl: 'https://popupplay.fun',
-    githubUrl: '',
-    platforms: ['Web'],
-  },
-  {
     title: 'Gold Shop Ledger System',
+    shortRole: 'Solo full-stack developer',
     tagline: 'Trading, ledger & inventory software for a gold shop',
     role: 'Solo full-stack developer',
     client: 'Gold & silver trading shop, Pakistan (via Softsolutionz)',
@@ -249,7 +232,31 @@ export const projects: Project[] = [
     platforms: ['Web'],
   },
   {
+    title: 'Popupplay',
+    shortRole: 'Solo full-stack developer',
+    tagline: 'Location-based social & dating platform',
+    role: 'Solo full-stack developer',
+    client: 'Client via Softsolutionz',
+    period: '2026 · ~4 months + ongoing',
+    summary:
+      'A dating platform where users "pop up" on a live map to show nearby people they are available right now, then connect through chat, video calls and reels.',
+    highlights: [
+      'Live map pop-ups: users broadcast that they are live and others discover them by location (Leaflet)',
+      'Real-time messaging over WebSockets and peer-to-peer video calls with WebRTC (STUN/TURN)',
+      'Reels: short-form video uploads and feed',
+      'Payment integration for premium features; tipping system in progress',
+      'Ongoing feature work for the client after launch',
+    ],
+    tech: ['Node.js', 'Express', 'React', 'WebSockets', 'WebRTC', 'Leaflet', 'Nginx'],
+    status: 'Live · active users · code private (client-owned)',
+    image: '/images/projects/popupplay.webp',
+    liveUrl: 'https://popupplay.fun',
+    githubUrl: '',
+    platforms: ['Web'],
+  },
+  {
     title: 'AI Embroidery Files',
+    shortRole: 'Solo full-stack developer',
     tagline: 'AI design generation + embroidery digitizing orders',
     role: 'Solo full-stack developer',
     client: 'Embroidery digitizer (via Softsolutionz)',
@@ -271,6 +278,7 @@ export const projects: Project[] = [
   },
   {
     title: 'Makanzar Real Estate',
+    shortRole: 'Solo full-stack developer',
     tagline: 'Property listing platform for dealers',
     role: 'Solo full-stack developer',
     client: 'Real estate agency, Pakistan (referral)',
@@ -392,7 +400,7 @@ export const experience = [
     points: [
       'Solo developer on client products for US and local clients, from requirements to deployment',
       'Kannari Music Academy: subscription e-learning platform plus a React Native app, Stripe billing and parent consent for minors',
-      'Popupplay (WebRTC video calls, WebSockets, CCBill), AI Embroidery Files (OpenAI + Stripe) and a gold shop ledger that replaced paper and Excel',
+      'Popupplay (WebRTC video calls, WebSockets, live maps), AI Embroidery Files (OpenAI + Stripe) and a gold shop ledger that replaced paper and Excel',
     ],
     highlights: ['Django', 'Node.js', 'React Native', 'Stripe', 'WebRTC'],
   },
