@@ -81,6 +81,32 @@ export const projects: Project[] = [
     platforms: ['Web'],
   },
   {
+    title: 'SCMS – Clinical Management System',
+    tagline: 'Behavioural health EHR for a US provider',
+    role: 'Founder & lead developer · PrimeCurve Solutionz',
+    client: 'SYNERGY Recovery Institute, Washington DC',
+    period: 'Aug 2026 – present',
+    summary:
+      'A custom EHR, practice management and revenue-cycle platform built under a signed development agreement and delivered in contract phases. Phases 1–3 are live in production with real patient records; billing and telehealth are next.',
+    highlights: [
+      'Built to HIPAA requirements: MFA, account lockout, server-enforced idle timeout, encryption in transit and at rest, and 13 roles with 49 permissions checked on every request',
+      'Immutable, hash-chained audit trail that even a database superuser cannot edit or delete',
+      'One patient, one chart: permanent MRN, duplicate detection and multi-program enrolment through an admin-managed program registry (no code release needed for a new program)',
+      'Scheduling with day, week and month views, a 9-status appointment lifecycle, conflict warnings and a guided 4-step front-desk check-in',
+      'Insurance with primary, secondary and tertiary coverage, coordination of benefits and card images; documents verified by content and stored outside the web root',
+      'Clinical documentation: diagnostic assessment (90791), treatment plans with ICD-10 diagnoses and review cycles, psychotherapy progress notes, and clinician and patient e-signatures',
+      'Supervision engine: co-signature workflow that seals notes, configurable rules and a 72-hour deadline, plus billing-readiness checks',
+      'Online registration and intake packets with patient invites and e-signing',
+      'All 26 contract acceptance items verified end to end by an automated test, within a suite of 1,700+ backend tests',
+    ],
+    tech: ['Django 5', 'Django REST Framework', 'React 18', 'TypeScript', 'Mantine', 'TanStack Query', 'PostgreSQL 16', 'Redis', 'Nginx + Gunicorn', 'Playwright'],
+    status: 'Live in production with live patient records · Phases 1–3 delivered · code private',
+    image: '/images/projects/scms.webp',
+    liveUrl: 'https://scms-sri.com',
+    githubUrl: '',
+    platforms: ['Web'],
+  },
+  {
     title: 'Dr. Nath – Coaching for Impact',
     tagline: 'All-in-one coaching platform + mobile app',
     role: 'Solo full-stack developer',
@@ -261,6 +287,13 @@ export const testimonials = [
 ];
 
 export const experience = [
+  {
+    year: 'Aug 2026 - Present',
+    title: 'Founder & Lead Developer',
+    company: 'PrimeCurve Solutionz',
+    description: 'Run my own software studio. Building SCMS, a HIPAA-oriented behavioural health EHR for a Washington DC provider under a phased development agreement: requirements, architecture, development, deployment and client communication.',
+    highlights: ['Django', 'React + TypeScript', 'PostgreSQL', 'HIPAA', 'Client delivery'],
+  },
   {
     year: 'Sep 2025 - Present',
     title: 'Software Engineer',
