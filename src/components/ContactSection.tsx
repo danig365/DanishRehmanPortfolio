@@ -1,19 +1,26 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, ExternalLink, Github, Linkedin, Mail, CheckCircle, AlertCircle, Loader, MessageCircle } from 'lucide-react';
+import { Send, ExternalLink, Github, Linkedin, Mail, CheckCircle, AlertCircle, Loader, MessageCircle, FileDown, MapPin } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import AnimatedSection from './AnimatedSection';
 import SectionHeading from './SectionHeading';
 import { personalInfo } from '../data/portfolio';
 import BackgroundVideo from './BackgroundVideo';
 
+const topics = ['New project', 'Ongoing work', 'Full-time role'];
+
 export default function ContactSection() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '', topic: topics[0], website: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Honeypot: real visitors never see or fill the "website" field
+    if (formData.website) {
+      setStatus('success');
+      return;
+    }
     setStatus('sending');
     setErrorMessage('');
 
@@ -25,13 +32,13 @@ export default function ContactSection() {
         {
           name: formData.name,
           email: formData.email,
-          message: formData.message,
+          message: `[${formData.topic}]\n\n${formData.message}`,
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
       );
 
       setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: '', email: '', message: '', topic: topics[0], website: '' });
       
       // Reset success message after 5 seconds
       setTimeout(() => setStatus('idle'), 5000);
@@ -39,7 +46,7 @@ export default function ContactSection() {
     } catch (error) {
       console.error('Email sending failed:', error);
       setStatus('error');
-      setErrorMessage('Failed to send message. Please try again or contact me directly.');
+      setErrorMessage(`Couldn't send your message. Please email me at ${personalInfo.email} or message me on WhatsApp.`);
       
       // Reset error message after 5 seconds
       setTimeout(() => setStatus('idle'), 5000);
@@ -62,7 +69,7 @@ export default function ContactSection() {
         <SectionHeading
           label="// get in touch"
           title="Let's Work Together"
-          description="Have a project in mind? Let's discuss how I can help bring it to life."
+          description="Tell me about your project or role. I usually reply on WhatsApp the same day."
         />
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
@@ -81,7 +88,7 @@ export default function ContactSection() {
                   </div>
                   <div className="flex-1">
                     <p className="text-slate-900 dark:text-white font-medium">WhatsApp</p>
-                    <p className="text-slate-400 dark:text-gray-500 text-sm">Fastest way to reach me · {personalInfo.phone}</p>
+                    <p className="text-slate-500 dark:text-gray-400 text-sm">Usually same-day reply · {personalInfo.phone}</p>
                   </div>
                   <ExternalLink className="w-5 h-5 text-slate-400 dark:text-gray-500 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" />
                 </a>
@@ -92,14 +99,18 @@ export default function ContactSection() {
                 <div className="space-y-3">
                   {[
                     { icon: Mail, label: 'Email', value: personalInfo.email, href: `mailto:${personalInfo.email}` },
+                    { icon: FileDown, label: 'CV', value: 'Download PDF', href: personalInfo.cv },
                     { icon: Github, label: 'GitHub', value: personalInfo.github.replace('https://', '').replace('http://', '').replace(/\/$/, ''), href: personalInfo.github },
                     { icon: Linkedin, label: 'LinkedIn', value: personalInfo.linkedin.replace('https://', '').replace('http://', '').replace(/\/$/, ''), href: personalInfo.linkedin },
                   ].map((channel) => (
                     <a
                       key={channel.label}
                       href={channel.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      {...(channel.href.startsWith('http')
+                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                        : channel.label === 'CV'
+                          ? { download: true }
+                          : {})}
                       className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/[0.04] transition-colors group"
                     >
                       <div className="w-10 h-10 rounded-lg glass-badge flex items-center justify-center group-hover:bg-white/[0.08] transition-colors">
@@ -112,6 +123,10 @@ export default function ContactSection() {
                     </a>
                   ))}
                 </div>
+                <p className="flex items-center gap-2 mt-4 pt-4 border-t border-black/[0.06] dark:border-white/[0.08] text-sm text-slate-500 dark:text-gray-400">
+                  <MapPin className="w-4 h-4 text-sky-600 dark:text-sky-400" />
+                  {personalInfo.address} · UTC+5 · Remote worldwide
+                </p>
               </div>
             </div>
           </AnimatedSection>
@@ -121,6 +136,45 @@ export default function ContactSection() {
               <h3 className="text-slate-900 dark:text-white font-semibold text-lg mb-6">Send a Message</h3>
 
               <div className="space-y-5">
+                <fieldset>
+                  <legend className="block text-sm text-slate-400 dark:text-gray-500 mb-2 font-mono">{'>'} reaching out about</legend>
+                  <div className="flex flex-wrap gap-2">
+                    {topics.map((topic) => (
+                      <label
+                        key={topic}
+                        className={`px-3.5 py-2 rounded-xl text-sm cursor-pointer transition-colors has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-sky-400 ${
+                          formData.topic === topic
+                            ? 'bg-slate-900 dark:bg-white/90 text-white dark:text-[#080c12]'
+                            : 'glass-subtle text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white'
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name="topic"
+                          value={topic}
+                          checked={formData.topic === topic}
+                          onChange={() => setFormData({ ...formData, topic })}
+                          className="sr-only"
+                        />
+                        {topic}
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                {/* Honeypot field, hidden from people and screen readers */}
+                <div className="hidden" aria-hidden="true">
+                  <label htmlFor="website">Website</label>
+                  <input
+                    id="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formData.website}
+                    onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                  />
+                </div>
+
                 <div>
                   <label htmlFor="name" className="block text-sm text-slate-400 dark:text-gray-500 mb-2 font-mono">
                     {'>'} name
@@ -129,6 +183,8 @@ export default function ContactSection() {
                     id="name"
                     type="text"
                     required
+                    maxLength={100}
+                    autoComplete="name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-4 py-3 glass-input rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-600 focus:outline-none font-mono text-sm"
@@ -144,6 +200,8 @@ export default function ContactSection() {
                     id="email"
                     type="email"
                     required
+                    maxLength={150}
+                    autoComplete="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-4 py-3 glass-input rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-600 focus:outline-none font-mono text-sm"
@@ -158,6 +216,7 @@ export default function ContactSection() {
                   <textarea
                     id="message"
                     required
+                    maxLength={5000}
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
