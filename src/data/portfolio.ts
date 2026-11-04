@@ -461,28 +461,32 @@ export const processSteps = [
 
 export const faqs = [
   {
-    question: 'What technologies do you specialize in?',
-    answer: 'I specialize in Django + React for full stack web apps, along with Supabase and Firebase for backend services. I also work with TypeScript, PostgreSQL, and Tailwind CSS.',
+    question: 'What do you specialise in?',
+    answer: 'Django and React (TypeScript) for web platforms, React Native for mobile apps and PostgreSQL for data, with Node.js when a project needs it. Most of my work is healthcare, SaaS, booking and e-learning products.',
   },
   {
-    question: 'How can I hire you?',
-    answer: 'Message me on WhatsApp, email me, connect on LinkedIn or use the contact form below. Share your project details and I will suggest the best scope, timeline, and pricing.',
+    question: 'How long does a project take?',
+    answer: 'It depends on scope. For reference: AI Embroidery Files took about 1.5 months, Dr. Nath (web + mobile app) about 4 months, and Kannari Music Academy (web + mobile app) about 5 months. Your proposal includes a milestone timeline.',
   },
   {
-    question: 'What is your typical project timeline?',
-    answer: 'Project timeline depends on complexity. Small fixes can be done quickly, while full web applications typically require multiple milestones. I always provide a clear estimate after reviewing your requirements.',
+    question: 'How do payments work?',
+    answer: 'Projects get a fixed quote split into milestones, and you pay as each milestone is delivered. Ongoing work runs on a monthly retainer.',
   },
   {
-    question: 'Do you build scalable web applications?',
-    answer: 'Yes. I build responsive web applications with React/Next.js and robust backend systems that support modern product workflows.',
+    question: 'Which time zone are you in, and how do we communicate?',
+    answer: 'I am in Pakistan (UTC+5). I keep overlapping hours with US and European clients and send regular progress updates on WhatsApp or email.',
   },
   {
-    question: 'Do you provide post-delivery support?',
-    answer: 'Absolutely. I offer post-launch support to fix bugs, handle deployment issues, and make minor adjustments. For ongoing maintenance, we can discuss a separate arrangement.',
+    question: 'Can you work on an existing codebase?',
+    answer: 'Yes. I take on bug fixes, new features, performance work and upgrades in existing Django, React and Node.js projects.',
   },
   {
-    question: 'Can you work with existing codebases?',
-    answer: 'Yes. I regularly work with existing projects — fixing bugs, adding features, optimizing performance, or migrating to newer technologies. I can work with any JavaScript/TypeScript codebase.',
+    question: 'Can you sign an NDA and handle sensitive data?',
+    answer: 'Yes. I have built healthcare systems with role-based access, audit logs and encryption, and I am happy to sign an NDA before we discuss details.',
+  },
+  {
+    question: 'Are you open to full-time roles?',
+    answer: 'Yes, I am open to full-time remote positions as a full stack or backend developer. You can download my CV from the top of this page.',
   },
 ];
 
