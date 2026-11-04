@@ -10,7 +10,7 @@ export const personalInfo = {
 
 Today I work as a Software Engineer at Cognisol Technologies, where I'm the sole developer of the CogniPulse healthcare platform, and I run my own studio, PrimeCurve Solutionz, where I'm building a behavioural health EHR for a US provider. I care about software that is secure, well tested and easy for real people to use, and about clear communication with the people I build for. I'm open to full-time remote roles and to freelance projects.`,
   github: 'https://github.com/danig365/',
-  linkedin: 'https://www.linkedin.com/in/danish-rehman-34788624b/',
+  linkedin: 'https://www.linkedin.com/in/danishrehman-dev/',
   email: 'gdanish365@gmail.com',
   phone: '+92 324 9567570',
   whatsapp: 'https://wa.me/923249567570',
