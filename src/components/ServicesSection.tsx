@@ -1,8 +1,13 @@
-import { ArrowRight } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 import SectionHeading from './SectionHeading';
-import { services } from '../data/portfolio';
+import { services, personalInfo } from '../data/portfolio';
 import BackgroundVideo from './BackgroundVideo';
+
+const whatsappFor = (service: string) =>
+  `${personalInfo.whatsapp}?text=${encodeURIComponent(
+    `Hi Danish, I saw your portfolio and I'm interested in ${service}. Can we discuss my project?`
+  )}`;
 
 export default function ServicesSection() {
   return (
@@ -20,46 +25,51 @@ export default function ServicesSection() {
         <SectionHeading
           label="// what I offer"
           title="Services"
-          description="End-to-end development solutions for your business needs"
+          description="What I can build for you, and the projects where I've already done it"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <AnimatedSection key={service.title} delay={index * 0.1} direction={index % 2 === 0 ? 'left' : 'right'}>
-              <div 
-                className="group relative h-full p-6 lg:p-8 rounded-2xl transition-all duration-300 border border-white/[0.15] dark:border-white/[0.1] bg-white/[0.15] dark:bg-white/[0.02] hover:bg-white/[0.25] dark:hover:bg-white/[0.04] hover:border-white/[0.25] dark:hover:border-white/[0.15]"
-                style={{ backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)' }}
-              >
-                <div className="flex items-start gap-4 mb-5">
-                  <div className="w-12 h-12 rounded-xl bg-white/[0.2] dark:bg-white/[0.05] border border-white/[0.3] dark:border-white/[0.1] flex items-center justify-center shrink-0 group-hover:bg-white/[0.3] dark:group-hover:bg-white/[0.08] transition-colors">
-                    <service.icon className="w-6 h-6 text-sky-600 dark:text-sky-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-slate-900 dark:text-white font-semibold text-lg mb-1 group-hover:text-sky-600 dark:group-hover:text-sky-300 transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-slate-400 dark:text-gray-500 text-sm leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
+            <AnimatedSection key={service.title} delay={(index % 3) * 0.1}>
+              <div className="group h-full flex flex-col p-6 rounded-2xl glass-card glass-card-hover glass-shine transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl glass-badge flex items-center justify-center mb-5">
+                  <service.icon className="w-6 h-6 text-sky-600 dark:text-sky-400" />
                 </div>
+                <h3 className="text-slate-900 dark:text-white font-semibold text-lg mb-2">{service.title}</h3>
+                <p className="text-slate-500 dark:text-gray-400 text-sm leading-relaxed mb-5">{service.description}</p>
 
-                <div className="space-y-2 mb-6">
+                <ul className="space-y-2 mb-6">
                   {service.features.map((feature) => (
-                    <div key={feature} className="flex items-center gap-3 text-sm">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sky-600/40 dark:bg-sky-400/40 shrink-0" />
-                      <span className="text-slate-500 dark:text-gray-400">{feature}</span>
-                    </div>
+                    <li key={feature} className="flex items-start gap-3 text-sm">
+                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-sky-500 dark:bg-sky-400 shrink-0" />
+                      <span className="text-slate-600 dark:text-gray-300">{feature}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
 
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 text-sm text-slate-400 dark:text-gray-500 hover:text-sky-600 dark:hover:text-sky-300 font-mono transition-colors group/link"
-                >
-                  Get Started
-                  <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
-                </a>
+                <div className="mt-auto">
+                  <p className="text-xs font-mono text-slate-500 dark:text-gray-300 mb-2">Proven in</p>
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {service.provenIn.map((project) => (
+                      <a
+                        key={project}
+                        href="#projects"
+                        className="px-2.5 py-1 text-xs rounded-lg glass-subtle text-slate-600 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-300 transition-colors"
+                      >
+                        {project}
+                      </a>
+                    ))}
+                  </div>
+                  <a
+                    href={whatsappFor(service.title)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-green-700 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    Discuss this on WhatsApp
+                  </a>
+                </div>
               </div>
             </AnimatedSection>
           ))}

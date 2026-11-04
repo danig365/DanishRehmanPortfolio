@@ -1,5 +1,5 @@
 import {
-  Code2, Smartphone, Database, Globe, Layers, Zap, Server
+  Code2, Smartphone, Database, Layers, Zap, Server, HeartPulse, CreditCard, Sparkles, Briefcase
 } from 'lucide-react';
 
 export const personalInfo = {
@@ -304,27 +304,45 @@ export const projects: Project[] = [
 export const services = [
   {
     icon: Layers,
-    title: 'Django + React Web Development',
-    description: 'End-to-end web application development with scalable backend architecture and modern, responsive frontend experiences.',
-    features: ['React/Next.js Frontend', 'Django Backend', 'PostgreSQL Database', 'REST API Integration'],
+    title: 'SaaS & Web Platforms',
+    description: 'Full web applications built end to end with Django and React, from database design to deployment.',
+    features: ['Multi-role dashboards and admin panels', 'REST APIs with Django REST Framework', 'PostgreSQL data modelling', 'Deployment on your own server'],
+    provenIn: ['CogniPulse', 'Dr. Nath', 'Kannari'],
+  },
+  {
+    icon: HeartPulse,
+    title: 'Healthcare Software',
+    description: 'EHR and appointment systems built with the security and auditability healthcare data needs.',
+    features: ['Patient records, scheduling and check-in', 'HIPAA-oriented security: MFA, RBAC, encryption', 'Immutable audit trails', 'Clinical documentation and e-signatures'],
+    provenIn: ['SCMS', 'CogniPulse'],
   },
   {
     icon: Smartphone,
-    title: 'Web App Enhancement',
-    description: 'Performance optimization, bug fixing, and feature expansion for production web applications.',
-    features: ['Performance Tuning', 'Bug Fixing', 'Feature Development', 'Code Refactoring'],
+    title: 'Mobile Apps',
+    description: 'React Native apps for iOS and Android that share one backend with your web platform.',
+    features: ['One API for web and mobile', 'Role-based app experiences', 'Chat, notifications and media', 'Same features, consistent data'],
+    provenIn: ['Kannari', 'Dr. Nath'],
   },
   {
-    icon: Database,
-    title: 'Backend & Database Solutions',
-    description: 'Secure backend architecture with Supabase and Firebase, including auth systems, realtime updates, and cloud workflows.',
-    features: ['Supabase / Firebase', 'Real-time Databases', 'Authentication', 'Cloud Functions'],
+    icon: CreditCard,
+    title: 'Payments, Booking & Real-time',
+    description: 'The features that make platforms work: getting paid, scheduling people and talking live.',
+    features: ['Stripe payments and subscriptions', 'Booking with calendar sync and reminders', 'Real-time chat (WebSockets)', 'Video calls (WebRTC / LiveKit)'],
+    provenIn: ['Dr. Nath', 'Kannari', 'Popupplay'],
   },
   {
-    icon: Globe,
-    title: 'API Development & Integration',
-    description: 'Custom API development and third-party integrations including payment gateways, social auth, and cloud services.',
-    features: ['RESTful APIs', 'Third-party Integration', 'Payment Gateways', 'OAuth / Social Auth'],
+    icon: Sparkles,
+    title: 'AI Features',
+    description: 'Practical AI added to your product with the OpenAI and Claude APIs, wired into real workflows.',
+    features: ['AI assistants and chatbots', 'Call transcription and AI summaries', 'AI image generation', 'Cost-safe, server-side integration'],
+    provenIn: ['Dr. Nath', 'AI Embroidery'],
+  },
+  {
+    icon: Briefcase,
+    title: 'Business Software & Support',
+    description: 'Replace paper and spreadsheets with software your team can use daily, and keep existing apps healthy.',
+    features: ['Custom ledgers, inventory and reports', 'PDF / Excel exports and automated backups', 'Bug fixes, upgrades and performance', 'Deployment and server maintenance'],
+    provenIn: ['Gold Shop Ledger', 'CogniPulse'],
   },
 ];
 
