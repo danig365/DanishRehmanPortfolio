@@ -57,10 +57,10 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 
         <div className="relative h-48 sm:h-64 overflow-hidden">
           <img src={project.image} alt={`${project.title} screenshot`} className="w-full h-full object-cover object-top" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#f0f4f8] dark:from-[#0d131c] to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#f0f4f8] via-[#f0f4f8]/60 dark:from-[#0d131c] dark:via-[#0d131c]/60 to-transparent" />
         </div>
 
-        <div className="px-6 sm:px-8 pb-8 -mt-10 relative">
+        <div className="px-6 sm:px-8 pb-8 -mt-4 relative">
           <p className="text-sky-600 dark:text-sky-400 font-mono text-xs mb-2">{project.tagline}</p>
           <h3 id="project-modal-title" className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-3">
             {project.title}
