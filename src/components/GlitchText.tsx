@@ -5,11 +5,14 @@ interface GlitchTextProps {
   text: string;
   className?: string;
   as?: 'h1' | 'h2' | 'h3' | 'span';
+  // Delay before the one-time decode effect plays
+  delay?: number;
 }
 
 const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789';
 
-export default function GlitchText({ text, className = '', as: Tag = 'span' }: GlitchTextProps) {
+// Decodes the text from random characters once, then stays readable.
+export default function GlitchText({ text, className = '', as: Tag = 'span', delay = 400 }: GlitchTextProps) {
   const [glitchedText, setGlitchedText] = useState(text);
   const [isGlitching, setIsGlitching] = useState(false);
 
@@ -18,10 +21,10 @@ export default function GlitchText({ text, className = '', as: Tag = 'span' }: G
 
     let glitchInterval: ReturnType<typeof setInterval> | undefined;
 
-    const interval = setInterval(() => {
+    const start = setTimeout(() => {
       setIsGlitching(true);
       let iterations = 0;
-      const maxIterations = 6;
+      const maxIterations = 8;
 
       glitchInterval = setInterval(() => {
         setGlitchedText(
@@ -43,13 +46,13 @@ export default function GlitchText({ text, className = '', as: Tag = 'span' }: G
           setIsGlitching(false);
         }
       }, 50);
-    }, 5000);
+    }, delay);
 
     return () => {
-      clearInterval(interval);
+      clearTimeout(start);
       clearInterval(glitchInterval);
     };
-  }, [text]);
+  }, [text, delay]);
 
   return (
     <Tag className={`${className} ${isGlitching ? 'text-glow' : ''}`} aria-label={text}>

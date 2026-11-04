@@ -15,15 +15,15 @@ export const personalInfo = {
   phone: '+92 324 9567570',
   whatsapp: 'https://wa.me/923249567570',
   address: 'Gujranwala, Pakistan',
+  cv: '/Danish-Rehman-CV.pdf',
 };
 
 export const roles = [
-  'Full Stack Web Developer',
+  'Full Stack Developer',
   'Django + React Developer',
-  'Supabase Expert',
-  'Firebase Developer',
-  'API Integration Specialist',
-  'Independent Freelancer',
+  'React Native Developer',
+  'SaaS & EHR Builder',
+  'Founder @ PrimeCurve Solutionz',
 ];
 
 export const skills = [
@@ -475,11 +475,11 @@ export const certifications = [
 
 export const terminalLines = [
   { prefix: '~$', text: 'whoami', delay: 0 },
-  { prefix: '', text: 'Danish Rehman - Full Stack Web Developer', delay: 800 },
-  { prefix: '~$', text: 'cat skills.json', delay: 1600 },
-  { prefix: '', text: '["Django + React", "Supabase", "Firebase", "TypeScript"]', delay: 2400 },
-  { prefix: '~$', text: 'cat status.txt', delay: 3200 },
-  { prefix: '', text: 'Available for freelance and contract projects', delay: 4000 },
-  { prefix: '~$', text: 'echo "Let\'s build something amazing!"', delay: 4800 },
-  { prefix: '', text: "Let's build something amazing!", delay: 5600 },
+  { prefix: '', text: 'Danish Rehman - Full Stack Developer', delay: 700 },
+  { prefix: '~$', text: 'cat stack.json', delay: 1400 },
+  { prefix: '', text: '["Django", "React", "React Native", "Node.js", "PostgreSQL"]', delay: 2100 },
+  { prefix: '~$', text: 'cat projects.log', delay: 2800 },
+  { prefix: '', text: 'EHR · coaching platform · e-learning + mobile · gold shop ledger', delay: 3500 },
+  { prefix: '~$', text: 'cat status.txt', delay: 4200 },
+  { prefix: '', text: 'Open to freelance projects & full-time remote roles', delay: 4900 },
 ];
