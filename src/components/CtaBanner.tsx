@@ -43,17 +43,15 @@ export default function CtaBanner() {
             </h2>
 
             <p className="text-slate-500 dark:text-gray-400 text-lg max-w-xl mx-auto mb-8">
-              Let's discuss your project and build something exceptional together. Get in touch via Fiverr, WhatsApp, or send me a message.
+              Let's discuss your project and build something exceptional together. Message me on WhatsApp or send a message through the form.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href={personalInfo.fiverr}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contact"
                 className="group flex items-center gap-2 px-8 py-3.5 bg-slate-900 dark:bg-white/90 text-white dark:text-[#080c12] font-semibold rounded-xl hover:bg-slate-800 dark:hover:bg-white transition-all hover:shadow-lg hover:shadow-white/10 backdrop-blur-sm"
               >
-                Hire Me on Fiverr
+                Send a Message
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <a

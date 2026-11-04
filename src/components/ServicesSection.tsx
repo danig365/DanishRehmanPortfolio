@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 import SectionHeading from './SectionHeading';
-import { services, personalInfo } from '../data/portfolio';
+import { services } from '../data/portfolio';
 import BackgroundVideo from './BackgroundVideo';
 
 export default function ServicesSection() {
@@ -54,9 +54,7 @@ export default function ServicesSection() {
                 </div>
 
                 <a
-                  href={personalInfo.fiverr}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#contact"
                   className="inline-flex items-center gap-2 text-sm text-slate-400 dark:text-gray-500 hover:text-sky-600 dark:hover:text-sky-300 font-mono transition-colors group/link"
                 >
                   Get Started

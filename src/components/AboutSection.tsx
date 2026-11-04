@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { MapPin, Briefcase, Coffee, Award } from 'lucide-react';
+import { MapPin, Briefcase, Building2, GraduationCap, Globe } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 import SectionHeading from './SectionHeading';
 import { personalInfo, stats } from '../data/portfolio';
@@ -11,7 +11,7 @@ export default function AboutSection() {
         <SectionHeading
           label="// about me"
           title="Who I Am"
-          description="A passionate developer who turns complex problems into elegant solutions"
+          description="Developer, founder, and the person who ships your product end to end"
         />
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -44,26 +44,30 @@ export default function AboutSection() {
                 transition={{ delay: 0.3 }}
                 className="absolute -top-6 -right-4 sm:-right-6 w-28 h-28 sm:w-32 sm:h-32 rounded-2xl glass-panel glass-shine bg-white/95 dark:bg-[#0d131c]/95 flex flex-col items-center justify-center gap-1"
               >
-                <span className="text-3xl font-bold text-slate-900 dark:text-white">3+</span>
-                <span className="text-xs text-slate-500 dark:text-gray-400 text-center">Years of<br />Experience</span>
+                <span className="text-xs text-slate-500 dark:text-gray-400 text-center">Coding<br />since</span>
+                <span className="text-3xl font-bold text-slate-900 dark:text-white">2021</span>
               </motion.div>
             </div>
           </AnimatedSection>
 
           <div>
             <AnimatedSection direction="right" delay={0.1}>
-              <p className="text-slate-500 dark:text-gray-400 text-lg leading-relaxed mb-6">
-                {personalInfo.bio}
-              </p>
+              <div className="space-y-4 mb-6">
+                {personalInfo.bio.split('\n\n').map((paragraph) => (
+                  <p key={paragraph.slice(0, 24)} className="text-slate-500 dark:text-gray-400 text-lg leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </AnimatedSection>
 
             <AnimatedSection direction="right" delay={0.2}>
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {[
-                  { icon: Briefcase, label: 'Freelancer', value: 'Fiverr Seller' },
-                  { icon: Coffee, label: 'Specialty', value: 'Django + React' },
-                  { icon: Award, label: 'Focus', value: 'Clean Code' },
-                  { icon: MapPin, label: 'Availability', value: 'Remote / Global' },
+                  { icon: Briefcase, label: 'Currently', value: 'Software Engineer @ Cognisol' },
+                  { icon: Building2, label: 'Founder', value: 'PrimeCurve Solutionz' },
+                  { icon: GraduationCap, label: 'Education', value: 'BS Computer Science' },
+                  { icon: Globe, label: 'Availability', value: 'Remote · UTC+5 (overlaps US & EU)' },
                 ].map((item) => (
                   <div
                     key={item.label}

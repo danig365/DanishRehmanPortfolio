@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, ExternalLink, Github, Linkedin, Mail, MessageSquare, CheckCircle, AlertCircle, Loader, MessageCircle } from 'lucide-react';
+import { Send, ExternalLink, Github, Linkedin, Mail, CheckCircle, AlertCircle, Loader, MessageCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import AnimatedSection from './AnimatedSection';
 import SectionHeading from './SectionHeading';
@@ -71,17 +71,17 @@ export default function ContactSection() {
               <div className="p-6 rounded-2xl glass-panel glass-shine">
                 <h3 className="text-slate-900 dark:text-white font-semibold text-lg mb-4">Preferred Method</h3>
                 <a
-                  href={personalInfo.fiverr}
+                  href={personalInfo.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center gap-4 p-4 rounded-xl glass-subtle hover:bg-white/[0.05] transition-all"
                 >
                   <div className="w-12 h-12 rounded-xl glass-badge flex items-center justify-center">
-                    <MessageSquare className="w-6 h-6 text-sky-600 dark:text-sky-400" />
+                    <MessageCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-slate-900 dark:text-white font-medium">Fiverr Profile</p>
-                    <p className="text-slate-400 dark:text-gray-500 text-sm">One of my hiring channels with secure payments</p>
+                    <p className="text-slate-900 dark:text-white font-medium">WhatsApp</p>
+                    <p className="text-slate-400 dark:text-gray-500 text-sm">Fastest way to reach me · {personalInfo.phone}</p>
                   </div>
                   <ExternalLink className="w-5 h-5 text-slate-400 dark:text-gray-500 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" />
                 </a>
@@ -92,7 +92,6 @@ export default function ContactSection() {
                 <div className="space-y-3">
                   {[
                     { icon: Mail, label: 'Email', value: personalInfo.email, href: `mailto:${personalInfo.email}` },
-                    { icon: MessageCircle, label: 'WhatsApp', value: personalInfo.phone, href: personalInfo.whatsapp },
                     { icon: Github, label: 'GitHub', value: personalInfo.github.replace('https://', '').replace('http://', '').replace(/\/$/, ''), href: personalInfo.github },
                     { icon: Linkedin, label: 'LinkedIn', value: personalInfo.linkedin.replace('https://', '').replace('http://', '').replace(/\/$/, ''), href: personalInfo.linkedin },
                   ].map((channel) => (

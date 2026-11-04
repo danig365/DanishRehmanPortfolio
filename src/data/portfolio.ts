@@ -7,8 +7,9 @@ export const personalInfo = {
   name: 'Danish Rehman',
   title: 'Full Stack Web Developer',
   tagline: 'Building Scalable Web Applications',
-  bio: `I'm a Full Stack Web Developer focused on building reliable, high-performance applications with Django, React, Supabase, and Firebase. I help startups and businesses turn ideas into production-ready products with clean code, modern UI, and scalable architecture. As an independent freelancer, I work with clients directly and through platforms like Fiverr for bug fixing, feature development, and end-to-end web application delivery.`,
-  fiverr: 'https://www.fiverr.com/danishpro12345',
+  bio: `I'm a full stack developer from Pakistan with a BS in Computer Science from the University of the Punjab. I started freelancing in 2024, and since then I've built production systems end to end, from requirements and database design to deployment and support.
+
+Today I work as a Software Engineer at Cognisol Technologies, where I'm the sole developer of the CogniPulse healthcare platform, and I run my own studio, PrimeCurve Solutionz, where I'm building a behavioural health EHR for a US provider. I care about software that is secure, well tested and easy for real people to use, and about clear communication with the people I build for. I'm open to full-time remote roles and to freelance projects.`,
   github: 'https://github.com/danig365/',
   linkedin: 'https://www.linkedin.com/in/danish-rehman-34788624b/',
   email: 'gdanish365@gmail.com',
@@ -273,10 +274,10 @@ export const services = [
 ];
 
 export const stats = [
-  { label: 'Projects Completed', value: '25+' },
-  { label: 'Happy Clients', value: '15+' },
+  { label: 'Production Apps', value: '8' },
+  { label: 'Clients', value: '10+' },
   { label: 'Years Experience', value: '3+' },
-  { label: 'Client Rating', value: '5 Star' },
+  { label: 'Countries Served', value: '3' },
 ];
 
 export const testimonials = [
@@ -388,7 +389,7 @@ export const faqs = [
   },
   {
     question: 'How can I hire you?',
-    answer: 'You can hire me directly through email/WhatsApp/LinkedIn or via my Fiverr profile. Share your project details and I will suggest the best scope, timeline, and pricing.',
+    answer: 'Message me on WhatsApp, email me, connect on LinkedIn or use the contact form below. Share your project details and I will suggest the best scope, timeline, and pricing.',
   },
   {
     question: 'What is your typical project timeline?',

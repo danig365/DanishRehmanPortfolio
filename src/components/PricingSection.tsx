@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Check, ArrowRight } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 import SectionHeading from './SectionHeading';
-import { packages, personalInfo } from '../data/portfolio';
+import { packages } from '../data/portfolio';
 
 export default function PricingSection() {
   return (
@@ -52,9 +52,7 @@ export default function PricingSection() {
                 </div>
 
                 <a
-                  href={personalInfo.fiverr}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#contact"
                   className={`flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-sm transition-all ${
                     pkg.highlighted
                       ? 'bg-slate-900 dark:bg-white/90 text-white dark:text-[#080c12] hover:bg-slate-800 dark:hover:bg-white hover:shadow-lg hover:shadow-white/10 backdrop-blur-sm'
