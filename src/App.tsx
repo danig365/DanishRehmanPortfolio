@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import LoadingSpinner from './components/LoadingSpinner';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Lazy load components below the fold for better performance
 const ExperienceSection = lazy(() => import('./components/ExperienceSection'));
@@ -31,26 +32,30 @@ export default function App() {
       <Navbar />
       <main className="relative z-10 mobile-safe container-safe">
         <HeroSection />
-        <Suspense fallback={<LoadingSpinner />}>
-          <div className="relative">
-            <AboutSection />
-            <ExperienceSection />
-            <SkillsSection />
-            <ProjectsSection />
-            <ServicesSection />
-            <PricingSection />
-            <ProcessSection />
-            <TestimonialsSection />
-            <EducationSection />
-            <FaqSection />
-            <CtaBanner />
-            <ContactSection />
-          </div>
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<LoadingSpinner />}>
+            <div className="relative">
+              <AboutSection />
+              <ExperienceSection />
+              <SkillsSection />
+              <ProjectsSection />
+              <ServicesSection />
+              <PricingSection />
+              <ProcessSection />
+              <TestimonialsSection />
+              <EducationSection />
+              <FaqSection />
+              <CtaBanner />
+              <ContactSection />
+            </div>
+          </Suspense>
+        </ErrorBoundary>
       </main>
-      <Suspense fallback={<div className="h-20" />}>
-        <Footer />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<div className="h-20" />}>
+          <Footer />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 }
