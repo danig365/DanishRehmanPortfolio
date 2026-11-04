@@ -83,11 +83,11 @@ export const projects: Project[] = [
   {
     title: 'SCMS – Clinical Management System',
     tagline: 'Behavioural health EHR for a US provider',
-    role: 'Founder & lead developer · PrimeCurve Solutionz',
-    client: 'SYNERGY Recovery Institute, Washington DC',
-    period: 'Aug 2026 – present',
+    role: 'Founder & solo developer · PrimeCurve Solutionz',
+    client: 'SYNERGY Recovery Institute, Washington DC (repeat client)',
+    period: 'Aug 2026 – present · ~5-month build',
     summary:
-      'A custom EHR, practice management and revenue-cycle platform built under a signed development agreement and delivered in contract phases. Phases 1–3 are live in production with real patient records; billing and telehealth are next.',
+      'After I delivered dr-nath.com, the same client hired me to build an EHR for their behavioural health company. I am the sole developer on this custom EHR, practice management and revenue-cycle platform, built under a signed development agreement in contract phases. Phases 1–3 are live in production with real patient records; billing and telehealth are next.',
     highlights: [
       'Built to HIPAA requirements: MFA, account lockout, server-enforced idle timeout, encryption in transit and at rest, and 13 roles with 49 permissions checked on every request',
       'Immutable, hash-chained audit trail that even a database superuser cannot edit or delete',
@@ -291,7 +291,7 @@ export const experience = [
     year: 'Aug 2026 - Present',
     title: 'Founder & Lead Developer',
     company: 'PrimeCurve Solutionz',
-    description: 'Run my own software studio. Building SCMS, a HIPAA-oriented behavioural health EHR for a Washington DC provider under a phased development agreement: requirements, architecture, development, deployment and client communication.',
+    description: 'Run my own software studio. Sole developer of SCMS, a HIPAA-oriented behavioural health EHR for a Washington DC provider, won as a repeat contract after delivering the client\'s coaching platform. I handle requirements, architecture, development, deployment and client communication.',
     highlights: ['Django', 'React + TypeScript', 'PostgreSQL', 'HIPAA', 'Client delivery'],
   },
   {
