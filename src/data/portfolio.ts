@@ -1,6 +1,5 @@
 import {
-  Code2, Smartphone, Database, Cloud, Globe, Shield,
-  Layers, Zap, GitBranch, Terminal, Server, Palette
+  Code2, Smartphone, Database, Globe, Layers, Zap, Server
 } from 'lucide-react';
 
 export const personalInfo = {
@@ -27,20 +26,68 @@ export const roles = [
   'Founder @ PrimeCurve Solutionz',
 ];
 
-export const skills = [
-  { name: 'React.js', level: 93, category: 'frontend', icon: Code2 },
-  { name: 'Django', level: 91, category: 'backend', icon: Server },
-  { name: 'Python', level: 90, category: 'backend', icon: Terminal },
-  { name: 'Supabase', level: 90, category: 'database', icon: Shield },
-  { name: 'Firebase', level: 89, category: 'backend', icon: Cloud },
-  { name: 'JavaScript (ES6+)', level: 86, category: 'frontend', icon: Smartphone },
-  { name: 'TypeScript', level: 88, category: 'frontend', icon: Terminal },
-  { name: 'Next.js', level: 84, category: 'frontend', icon: Globe },
-  { name: 'Tailwind CSS', level: 91, category: 'frontend', icon: Palette },
-  { name: 'PostgreSQL', level: 86, category: 'database', icon: Database },
-  { name: 'REST API Development', level: 90, category: 'backend', icon: Zap },
-  { name: 'Git / CI/CD', level: 85, category: 'tools', icon: GitBranch },
+// Each skill lists the project tech names that count as using it, so the
+// "N projects" figure on the site is derived from the projects below.
+export const skillGroups = [
+  {
+    title: 'Backend',
+    icon: Server,
+    skills: [
+      { name: 'Python', match: ['Django', 'Django 5'] },
+      { name: 'Django', match: ['Django', 'Django 5'] },
+      { name: 'Django REST Framework', match: ['Django REST Framework'] },
+      { name: 'Node.js', match: ['Node.js'] },
+      { name: 'Express', match: ['Express'] },
+      { name: 'Celery', match: ['Celery'] },
+      { name: 'Redis', match: ['Redis'] },
+      { name: 'WebSockets / Channels', match: ['WebSockets', 'Django Channels'] },
+    ],
+  },
+  {
+    title: 'Frontend & Mobile',
+    icon: Code2,
+    skills: [
+      { name: 'React', match: ['React', 'React 18'] },
+      { name: 'React Native', match: ['React Native'] },
+      { name: 'TypeScript', match: ['TypeScript'] },
+      { name: 'JavaScript (ES6+)', match: [] },
+      { name: 'Tailwind CSS', match: ['Tailwind CSS'] },
+      { name: 'Mantine', match: ['Mantine'] },
+      { name: 'TanStack Query', match: ['TanStack Query'] },
+    ],
+  },
+  {
+    title: 'Integrations & AI',
+    icon: Zap,
+    skills: [
+      { name: 'Stripe', match: ['Stripe'] },
+      { name: 'OpenAI / Claude APIs', match: ['OpenAI API', 'Claude / OpenAI'] },
+      { name: 'LiveKit', match: ['LiveKit'] },
+      { name: 'WebRTC', match: ['WebRTC'] },
+      { name: 'Vonage (IVR / SMS)', match: ['Vonage'] },
+      { name: 'Google Calendar API', match: ['Google Calendar API'] },
+      { name: 'Deepgram', match: ['Deepgram'] },
+      { name: 'CCBill', match: ['CCBill'] },
+      { name: 'Leaflet maps', match: ['Leaflet'] },
+    ],
+  },
+  {
+    title: 'Database, DevOps & Quality',
+    icon: Database,
+    skills: [
+      { name: 'PostgreSQL', match: ['PostgreSQL', 'PostgreSQL 16'] },
+      { name: 'Schema design & migrations', match: [] },
+      { name: 'Linux VPS', match: [] },
+      { name: 'Nginx', match: ['Nginx', 'Nginx + Gunicorn'] },
+      { name: 'Docker', match: ['Docker'] },
+      { name: 'Git', match: [] },
+      { name: 'Playwright', match: ['Playwright'] },
+      { name: 'pytest', match: [] },
+    ],
+  },
 ];
+
+export const alsoWorkedWith = ['Next.js', 'Supabase', 'Firebase'];
 
 export interface Project {
   title: string;
