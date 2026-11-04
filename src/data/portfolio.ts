@@ -541,13 +541,6 @@ export const education = [
   },
 ];
 
-export const certifications = [
-  { name: 'Django Web Development', issuer: 'Online Learning', year: '2024' },
-  { name: 'React & TypeScript Fundamentals', issuer: 'Online Learning', year: '2023' },
-  { name: 'Firebase for Web & Mobile', issuer: 'Online Learning', year: '2023' },
-  { name: 'Supabase Backend Essentials', issuer: 'Online Learning', year: '2024' },
-];
-
 export const terminalLines = [
   { prefix: '~$', text: 'whoami', delay: 0 },
   { prefix: '', text: 'Danish Rehman - Full Stack Developer', delay: 700 },
