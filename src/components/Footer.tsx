@@ -18,23 +18,22 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-slate-500 dark:text-gray-500 text-sm leading-relaxed max-w-xs">
-              Full Stack Web Developer specializing in Django + React, Supabase & Firebase.
-              Turning ideas into production-ready applications.
+              Full stack developer building production web and mobile apps with Django, React and React Native.
+              Founder of PrimeCurve Solutionz.
             </p>
           </div>
 
           <div>
             <h4 className="text-slate-900 dark:text-white font-semibold mb-4 text-sm uppercase tracking-wider">Quick Links</h4>
             <div className="flex flex-col gap-2">
-              {['About', 'Skills', 'Projects', 'Services', 'Contact'].map((link) => (
-                <button
-                  key={link}
-                  onClick={() => document.getElementById(link.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })}
-                  className="text-slate-500 dark:text-gray-500 hover:text-sky-600 dark:hover:text-sky-300 text-sm transition-colors text-left w-fit"
-                >
+              {['About', 'Experience', 'Skills', 'Projects', 'Services', 'Contact'].map((link) => (
+                <a key={link} href={`#${link.toLowerCase()}`} className="text-slate-500 dark:text-gray-500 hover:text-sky-600 dark:hover:text-sky-300 text-sm transition-colors text-left w-fit">
                   {link}
-                </button>
+                </a>
               ))}
+              <a href={personalInfo.cv} download className="text-slate-500 dark:text-gray-500 hover:text-sky-600 dark:hover:text-sky-300 text-sm transition-colors text-left w-fit">
+                Download CV
+              </a>
             </div>
           </div>
 
@@ -50,8 +49,7 @@ export default function Footer() {
                 <a
                   key={social.label}
                   href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {...(social.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                   aria-label={social.label}
                   className="w-10 h-10 rounded-xl glass-badge flex items-center justify-center text-slate-500 dark:text-gray-500 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-white/[0.08] transition-all"
                 >
