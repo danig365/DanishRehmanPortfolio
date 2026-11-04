@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, ExternalLink, Github, Linkedin, Mail, CheckCircle, AlertCircle, Loader, MessageCircle, FileDown, MapPin } from 'lucide-react';
-import emailjs from '@emailjs/browser';
 import AnimatedSection from './AnimatedSection';
 import SectionHeading from './SectionHeading';
 import { personalInfo } from '../data/portfolio';
@@ -25,17 +24,16 @@ export default function ContactSection() {
     setErrorMessage('');
 
     try {
-      // EmailJS configuration using environment variables
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
-        {
-          name: formData.name,
-          email: formData.email,
-          message: `[${formData.topic}]\n\n${formData.message}`,
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
-      );
+      // Sent by the serverless function in api/contact.ts
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || `Request failed (${response.status})`);
+      }
 
       setStatus('success');
       setFormData({ name: '', email: '', message: '', topic: topics[0], website: '' });
