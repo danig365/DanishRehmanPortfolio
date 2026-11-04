@@ -355,32 +355,22 @@ export const stats = [
 
 export const testimonials = [
   {
-    name: 'Client - Startup Founder',
-    role: 'Web Application Project',
-    text: 'Danish quickly understood our requirements and delivered a clean Django + React solution. Communication was smooth and every milestone was delivered on time.',
-    rating: 5,
-    platform: 'Fiverr',
+    name: 'Jules H. Mananga',
+    role: 'Founder, SYNERGY Recovery Institute',
+    project: 'SCMS EHR · repeat client',
+    text: 'Danish built my wife\'s coaching platform, and it went so well that I hired him to build our company\'s EHR. He works through every requirement carefully, explains his decisions clearly and delivers in well-tested phases.',
   },
   {
-    name: 'Client - Product Owner',
-    role: 'Firebase Web Platform',
-    text: 'Excellent developer to work with. Danish improved app performance and fixed critical issues in our Firebase workflow with professional code quality.',
-    rating: 5,
-    platform: 'Fiverr',
+    name: 'Dr. Nath',
+    role: 'Coach, Dr. Nath – Coaching for Impact',
+    project: 'dr-nath.com + mobile app',
+    text: 'Danish turned everything my practice needed, from bookings and payments to video sessions and client documents, into one platform and a mobile app. Patient, responsive and always ready with a solution.',
   },
   {
-    name: 'Client - Business Owner',
-    role: 'Supabase Dashboard',
-    text: 'Danish built our Supabase-based admin panel with realtime features exactly as requested. He was responsive, detail-oriented, and easy to collaborate with.',
-    rating: 5,
-    platform: 'Fiverr',
-  },
-  {
-    name: 'Client - Tech Lead',
-    role: 'Django API Optimization',
-    text: 'Very strong backend skills. Danish refactored our Django APIs, reduced response times, and delivered maintainable code with clear handover notes.',
-    rating: 5,
-    platform: 'Fiverr',
+    name: 'Haseeb',
+    role: 'CEO, Softsolutionz',
+    project: 'Client projects since 2025',
+    text: 'Danish has delivered several client projects for us as a solo full-stack developer, from an e-learning platform with a mobile app to real-time and AI features. Reliable, quick to pick up new stacks and easy to work with.',
   },
 ];
 
