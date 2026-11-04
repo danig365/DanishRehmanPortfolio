@@ -449,33 +449,23 @@ export const experience = [
 export const processSteps = [
   {
     step: '01',
-    title: 'Discovery',
-    description: 'We discuss your project requirements, goals, timeline, and budget. I analyze the scope and provide a clear proposal with milestones.',
+    title: 'Discovery call',
+    description: 'We agree on scope, users and must-haves, and you get a written proposal.',
   },
   {
     step: '02',
-    title: 'Architecture',
-    description: 'I design the technical architecture, select the right tech stack, plan the database schema, and create a development roadmap.',
+    title: 'Milestones',
+    description: 'A fixed quote split into milestones; you pay as each one is delivered.',
   },
   {
     step: '03',
-    title: 'Development',
-    description: 'I build your application iteratively with regular progress updates. Clean code, best practices, and thorough testing at every stage.',
+    title: 'Build in the open',
+    description: 'Regular progress updates and a staging link to try features as they land.',
   },
   {
     step: '04',
-    title: 'Review & Testing',
-    description: 'Comprehensive testing across devices and browsers. You review each milestone and provide feedback for refinements.',
-  },
-  {
-    step: '05',
-    title: 'Deployment',
-    description: 'I deploy your application to production with proper CI/CD setup, monitoring, and documentation for future maintenance.',
-  },
-  {
-    step: '06',
-    title: 'Support',
-    description: 'Post-launch support to handle any issues, performance tuning, and feature iterations based on real user feedback.',
+    title: 'Launch & handover',
+    description: 'Deployed on your server. You own the code, accounts and documentation.',
   },
 ];
 

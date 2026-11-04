@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Check, MessageCircle, FileDown, Mail } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 import SectionHeading from './SectionHeading';
-import { engagements, personalInfo } from '../data/portfolio';
+import { engagements, personalInfo, processSteps } from '../data/portfolio';
 
 export default function PricingSection() {
   return (
@@ -75,6 +75,21 @@ export default function PricingSection() {
             </AnimatedSection>
           ))}
         </div>
+
+        <AnimatedSection delay={0.2}>
+          <div className="max-w-6xl mx-auto mt-14">
+            <h3 className="text-center text-sm font-mono text-slate-500 dark:text-gray-400 mb-6">// how a project runs</h3>
+            <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {processSteps.map((step) => (
+                <li key={step.step} className="p-5 rounded-xl glass-subtle">
+                  <span className="text-xs font-mono text-sky-600 dark:text-sky-400">{step.step}</span>
+                  <p className="text-slate-900 dark:text-white font-semibold mt-1 mb-1.5">{step.title}</p>
+                  <p className="text-slate-500 dark:text-gray-400 text-sm leading-relaxed">{step.description}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );

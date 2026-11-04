@@ -12,7 +12,6 @@ const SkillsSection = lazy(() => import('./components/SkillsSection'));
 const ProjectsSection = lazy(() => import('./components/ProjectsSection'));
 const ServicesSection = lazy(() => import('./components/ServicesSection'));
 const PricingSection = lazy(() => import('./components/PricingSection'));
-const ProcessSection = lazy(() => import('./components/ProcessSection'));
 const TestimonialsSection = lazy(() => import('./components/TestimonialsSection'));
 const EducationSection = lazy(() => import('./components/EducationSection'));
 const FaqSection = lazy(() => import('./components/FaqSection'));
@@ -41,7 +40,6 @@ export default function App() {
               <ProjectsSection />
               <ServicesSection />
               <PricingSection />
-              <ProcessSection />
               <TestimonialsSection />
               <EducationSection />
               <FaqSection />
